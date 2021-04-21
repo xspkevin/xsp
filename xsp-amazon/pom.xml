@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.xsp.amazon</groupId>
+    <artifactId>xsp-amazon</artifactId>
+    <packaging>pom</packaging>
+    <version>${version}</version>
+
+    <modules>
+        <module>xsp-amazon-schedule</module>
+        <module>xsp-amazon-api</module>
+    </modules>
+
+    <properties>
+        <version>1.0.RELEASE</version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.test.skip>true</maven.test.skip>
+
+        <netty-all.version>4.1.58.Final</netty-all.version>
+        <gson.version>2.8.6</gson.version>
+
+        <spring.version>5.3.3</spring.version>
+        <spring-boot.version>2.4.2</spring-boot.version>
+
+        <slf4j-api.version>1.7.30</slf4j-api.version>
+        <junit.version>5.7.1</junit.version>
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+
+        <groovy.version>3.0.7</groovy.version>
+
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-war-plugin.version>3.3.1</maven-war-plugin.version>
+
+        <xxl-job.version>2.3.0</xxl-job.version>
+        <apollo.version>1.8.0</apollo.version>
+
+        <mybatis.version>3.5.4</mybatis.version>
+        <mysql-connector-java.version>5.1.47</mysql-connector-java.version>
+    </properties>
+
+
+</project>

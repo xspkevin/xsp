@@ -1,0 +1,16 @@
+server:
+  port: 9991
+
+## Apollo 配置
+app:
+  id: xsp-amazon  # 应用ID
+apollo:
+  cacheDir: /Users/xsp/Desktop/logs/data # 配置本地缓存目录
+  cluster: default # 指定使用哪个集群的配置
+  meta: http://127.0.0.1:8080
+  autoUpdateInjectedSpringProperties: true # 是否开启 Spring 参数自动更新
+  bootstrap:
+    enabled: true # 是否开启 Applo
+    namespaces: application # 设置 Namespace
+    eagerLoad:
+      enabled: false # 将 Apollo加载提到初始化日志系统之前
