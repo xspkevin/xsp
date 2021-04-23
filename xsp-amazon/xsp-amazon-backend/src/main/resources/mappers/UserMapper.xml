@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xsp.amazon.backend.mapper.UserMapper">
+    <sql id="userinfo">id, username, age, address</sql>
+
+    <select id="findAll" resultType="com.xsp.amazon.backend.domain.User">
+        select <include refid="userinfo"/> from user
+    </select>
+
+    <select id="findUserById" resultType="com.xsp.amazon.backend.domain.User">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+<!--    <select id="findUser" resultType="com.xsp.mybatis.pojo.User">-->
+<!--        SELECT * FROM user WHERE username = #{username}-->
+<!--        <if test="age != null">-->
+<!--            AND age = #{age}-->
+<!--        </if>-->
+<!--    </select>-->
+
+<!--    <select id="findUser" resultType="com.xsp.mybatis.pojo.User">-->
+<!--        SELECT * FROM user-->
+<!--        <trim prefix="where" prefixOverrides="and|or">-->
+<!--            <if test="username != null">-->
+<!--                username = #{username}-->
+<!--            </if>-->
+<!--            <if test="age != null">-->
+<!--                AND age = #{age}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </select>-->
+
+    <select id="findUser" resultType="com.xsp.amazon.backend.domain.User">
+        SELECT * FROM user
+        <where>
+            <if test="username != null">
+                username = #{username}
+            </if>
+            <if test="age != null">
+                AND age = #{age}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addUser">
+        INSERT INTO user VALUES (#{id}, #{username}, #{age}, #{address})
+    </insert>
+
+    <delete id="deleteUserById">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteUserByIds">
+        DELETE FROM user WHERE id IN (#{ids})
+    </delete>
+
+<!--    <update id="updateUser">-->
+<!--        UPDATE user SET username = #{username}, age = #{age}, address = #{address} WHERE id = #{id}-->
+<!--    </update>-->
+
+    <update id="updateUser">
+        UPDATE user
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="findUserByIds" resultType="com.xsp.amazon.backend.domain.User">
+        SELECT * FROM user
+        <where>
+            <foreach collection="ids" open="id IN(" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="choseUser" resultType="com.xsp.amazon.backend.domain.User">
+        SELECT * FROM user
+        <where>
+            <choose>
+                <when test="id != null">
+                    id = #{id}
+                </when>
+                <when test="username != null">
+                    username = #{username}
+                </when>
+                <otherwise>
+                    id = 11
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+</mapper>
